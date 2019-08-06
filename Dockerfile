@@ -1,3 +1,4 @@
+# Pull base image.
 FROM golang:1.12.7-stretch
 
 ENV SONAR_SCANNER_CLI_VERSION sonar-scanner-cli-4.0.0.1744-linux
@@ -13,4 +14,4 @@ RUN \
     curl --insecure -OL https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/${SONAR_SCANNER_CLI_VERSION}.zip  && \
     unzip ${SONAR_SCANNER_CLI_VERSION}.zip  -d /home && \
     rm -f ${SONAR_SCANNER_CLI_VERSION}.zip  && \
-    ln -s /home/SONAR_SCANNER_CLI_VERSION/bin/sonar-scanner /usr/bin/sonar-scanner
+    ln -s /home/${SONAR_SCANNER_CLI_VERSION}/bin/sonar-scanner /usr/bin/sonar-scanner
