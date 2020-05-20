@@ -1,7 +1,8 @@
 # Pull base image.
 FROM golang:1.13.11-stretch
 
-ENV SONAR_SCANNER_CLI_VERSION sonar-scanner-cli-4.3.0.2102-linux
+ENV SONAR_SCANNER_CLI_VERSION 4.3.0.2102
+
 
 # Install OpenJDK 8 && sonarqube scannner
 RUN \
@@ -11,7 +12,8 @@ RUN \
     apt-get -yqq autoremove && \
     apt-get -yqq clean && \
     rm -rf /var/lib/apt/lists/* /var/cache/* /tmp/* /var/tmp/* && \
-    curl --insecure -OL https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/${SONAR_SCANNER_CLI_VERSION}.zip  && \
-    unzip ${SONAR_SCANNER_CLI_VERSION}.zip  -d /home && \
-    rm -f ${SONAR_SCANNER_CLI_VERSION}.zip  && \
-    ln -s /home/${SONAR_SCANNER_CLI_VERSION}/bin/sonar-scanner /usr/bin/sonar-scanner
+    curl --insecure -OL https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_CLI_VERSION}-linux.zip  && \
+    unzip sonar-scanner-cli-${SONAR_SCANNER_CLI_VERSION}-linux.zip  -d /home && \
+    rm -f sonar-scanner-cli-${SONAR_SCANNER_CLI_VERSION}-linux.zip  && \
+    ln -s /home/sonar-scanner-${SONAR_SCANNER_CLI_VERSION}-linux/bin/sonar-scanner /usr/bin/sonar-scanner
+
